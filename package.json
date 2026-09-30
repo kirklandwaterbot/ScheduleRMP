@@ -1,12 +1,12 @@
 {
-  "name": "rmp-schedule-builder",
-  "version": "2.0.0",
+  "name": "cuny-schedule-professor-ratings",
+  "version": "2.0.1",
   "description": "Firefox add-on that adds Rate My Professors ratings to CUNY Schedule Builder.",
   "type": "module",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/kirklandwaterbot/rmp-schedule-builder.git"
+    "url": "https://github.com/kirklandwaterbot/cuny-schedule-professor-ratings.git"
   },
   "engines": {
     "node": ">=20"

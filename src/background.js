@@ -127,7 +127,7 @@ browser.runtime.onMessage.addListener(async (request) => {
     if (request?.action === "getCacheStats") return await getCacheStats();
     return { status: "error", code: "UNKNOWN_ACTION" };
   } catch (error) {
-    console.warn("Schedule Builder RMP request failed", error?.message || error);
+    console.warn("CUNY Schedule Professor Ratings request failed", error?.message || error);
     return {
       status: "error",
       code: "RMP_UNAVAILABLE",

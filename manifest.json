@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Schedule Builder RMP",
-  "short_name": "RMP Builder",
-  "version": "2.0.0",
+  "name": "CUNY Schedule Professor Ratings",
+  "short_name": "CUNY Ratings",
+  "version": "2.0.1",
   "description": "Shows Rate My Professors ratings beside instructors in CUNY Schedule Builder.",
   "permissions": ["storage"],
   "host_permissions": [
@@ -13,7 +13,7 @@
     "scripts": ["background.js"]
   },
   "action": {
-    "default_title": "Schedule Builder RMP settings",
+    "default_title": "CUNY Schedule Professor Ratings settings",
     "default_popup": "popup.html",
     "default_icon": {
       "16": "icons/icon-16.svg",
@@ -29,7 +29,7 @@
   },
   "browser_specific_settings": {
     "gecko": {
-      "id": "schedule-builder-rmp@kirklandwaterbot.github.io",
+      "id": "cuny-schedule-professor-ratings@kirklandwaterbot.github.io",
       "strict_min_version": "142.0",
       "data_collection_permissions": {
         "required": ["websiteContent"]

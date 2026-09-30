@@ -1,4 +1,4 @@
-# Schedule Builder RMP
+# CUNY Schedule Professor Ratings
 
 A Firefox add-on that places Rate My Professors ratings beside instructors in
 CUNY Schedule Builder. It is unofficial and is not affiliated with CUNY or Rate

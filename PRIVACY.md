@@ -1,6 +1,6 @@
 # Privacy
 
-CUNY Schedule Professor Ratings does not collect analytics, create user accounts, or send
+ScheduleRMP does not collect analytics, create user accounts, or send
 data to a server operated by this project.
 
 When a CUNY Schedule Builder page is open, the add-on reads instructor and

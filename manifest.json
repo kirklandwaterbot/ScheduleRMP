@@ -2,8 +2,8 @@
   "manifest_version": 3,
   "name": "ScheduleRMP",
   "short_name": "ScheduleRMP",
-  "version": "2.0.2",
-  "description": "Shows Rate My Professors ratings beside instructors in CUNY Schedule Builder.",
+  "version": "2.1.0",
+  "description": "Shows detailed professor ratings and exports CUNY schedules to calendar files.",
   "permissions": ["storage"],
   "host_permissions": [
     "https://www.ratemyprofessors.com/*",
@@ -39,8 +39,14 @@
   "content_scripts": [
     {
       "matches": ["https://sb.cunyfirst.cuny.edu/*"],
-      "css": ["content.css"],
-      "js": ["content.js"]
+      "css": ["content.css", "calendar/calendar.css"],
+      "js": [
+        "calendar/schedule-parser.js",
+        "calendar/ics-generator.js",
+        "calendar/calendar-ui.js",
+        "calendar/calendar-export.js",
+        "content.js"
+      ]
     }
   ]
 }

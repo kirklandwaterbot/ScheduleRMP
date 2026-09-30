@@ -1,15 +1,64 @@
-.rmp-rating { display: inline-flex; align-items: center; margin-inline-start: .4rem; font-size: .875em; font-weight: 700; line-height: 1.4; white-space: nowrap; }
-.rmp-rating a, .rmp-rating span, .rmp-rating button { color: inherit; }
-.rmp-rating a { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
-.rmp-rating a:focus-visible, .rmp-rating button:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
-.rmp-rating button { border: 1px solid currentColor; border-radius: .3rem; background: transparent; cursor: pointer; font: inherit; padding: 0 .25rem; }
-.rmp-rating--loading, .rmp-rating--unrated { color: #4a4a4a; }
-.rmp-rating--high { color: #146c2e; }
-.rmp-rating--medium { color: #8a4b00; }
-.rmp-rating--low, .rmp-rating--error { color: #b3261e; }
+.rmp-rating-container {
+  display: grid;
+  gap: 6px;
+  margin-top: 8px;
+  max-width: 620px;
+}
+
+.rmp-rating-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 7px 10px;
+  max-width: 100%;
+  padding: 7px 9px;
+  border: 1px solid #d7deea;
+  border-radius: 8px;
+  background: linear-gradient(180deg, #ffffff 0%, #f4f8ff 100%);
+  box-shadow: 0 1px 2px rgba(16, 24, 40, .06);
+  color: #183153;
+  font: 12px/1.4 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.rmp-rating-row--loading { color: #475467; }
+.rmp-rating-name { color: #183153; font-weight: 700; }
+.rmp-rating-summary { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; }
+.rmp-rating-pill { display: inline-flex; align-items: center; padding: 2px 7px; border-radius: 999px; color: #fff; font-weight: 700; }
+.rmp-rating-pill--low { background: #b42318; }
+.rmp-rating-pill--medium { background: #9a6700; }
+.rmp-rating-pill--high { background: #15803d; }
+.rmp-rating-pill--unknown { background: #667085; }
+.rmp-rating-meta, .rmp-rating-state { color: #475467; }
+.rmp-rating-state--error { color: #b42318; }
+
+.rmp-tag-list {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  flex-basis: 100%;
+}
+
+.rmp-tag-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: #e8eef8;
+  color: #26415f;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.rmp-rating-link { color: #0057b8; font-weight: 650; text-underline-offset: 2px; }
+.rmp-rating-retry { border: 1px solid currentColor; border-radius: 6px; background: transparent; color: #b42318; cursor: pointer; font: inherit; font-weight: 700; padding: 2px 7px; }
+.rmp-rating-link:focus-visible, .rmp-rating-retry:focus-visible { outline: 2px solid #155eef; outline-offset: 2px; }
+
 @media (prefers-color-scheme: dark) {
-  .rmp-rating--loading, .rmp-rating--unrated { color: #d0d0d0; }
-  .rmp-rating--high { color: #7ee2a0; }
-  .rmp-rating--medium { color: #ffc56f; }
-  .rmp-rating--low, .rmp-rating--error { color: #ffb4ab; }
+  .rmp-rating-row { border-color: #475467; background: #1d2939; color: #f2f4f7; }
+  .rmp-rating-name { color: #f2f4f7; }
+  .rmp-rating-row--loading, .rmp-rating-meta, .rmp-rating-state { color: #d0d5dd; }
+  .rmp-rating-state--error { color: #fda29b; }
+  .rmp-tag-chip { background: #344054; color: #e4e7ec; }
+  .rmp-rating-link { color: #84caff; }
+  .rmp-rating-retry { color: #fda29b; }
 }

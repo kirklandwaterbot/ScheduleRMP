@@ -8,6 +8,7 @@ const outputDirectory = resolve(projectRoot, "build", "firefox");
 
 await rm(outputDirectory, { recursive: true, force: true });
 await mkdir(resolve(outputDirectory, "icons"), { recursive: true });
+await mkdir(resolve(outputDirectory, "calendar"), { recursive: true });
 
 await Promise.all([
   build({
@@ -44,6 +45,18 @@ await Promise.all([
   copyFile(resolve(projectRoot, "src", "content.css"), resolve(outputDirectory, "content.css")),
   copyFile(resolve(projectRoot, "src", "popup.html"), resolve(outputDirectory, "popup.html")),
   copyFile(resolve(projectRoot, "src", "popup.css"), resolve(outputDirectory, "popup.css")),
+  ...[
+    "schedule-parser.js",
+    "ics-generator.js",
+    "calendar-ui.js",
+    "calendar-export.js",
+    "calendar.css",
+  ].map((fileName) =>
+    copyFile(
+      resolve(projectRoot, "src", "calendar", fileName),
+      resolve(outputDirectory, "calendar", fileName),
+    ),
+  ),
   ...[16, 32, 48, 96, 128].map((size) =>
     copyFile(
       resolve(projectRoot, "src", "icons", `icon-${size}.svg`),

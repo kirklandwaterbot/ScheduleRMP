@@ -1,6 +1,12 @@
-const DEFAULT_SETTINGS = Object.freeze({ enabled: true, hideUnrated: false, cacheHours: 12 });
+const DEFAULT_SETTINGS = Object.freeze({
+  enabled: true,
+  hideUnrated: false,
+  calendarExport: true,
+  cacheHours: 12,
+});
 const enabled = document.querySelector("#enabled");
 const hideUnrated = document.querySelector("#hide-unrated");
+const calendarExport = document.querySelector("#calendar-export");
 const cacheHours = document.querySelector("#cache-hours");
 const form = document.querySelector("#settings-form");
 const clearCache = document.querySelector("#clear-cache");
@@ -25,6 +31,7 @@ async function loadSettings() {
   const settings = { ...DEFAULT_SETTINGS, ...(stored.settings || {}) };
   enabled.checked = settings.enabled;
   hideUnrated.checked = settings.hideUnrated;
+  calendarExport.checked = settings.calendarExport;
   cacheHours.value = String(settings.cacheHours);
 }
 
@@ -33,6 +40,7 @@ form.addEventListener("change", async () => {
     settings: {
       enabled: enabled.checked,
       hideUnrated: hideUnrated.checked,
+      calendarExport: calendarExport.checked,
       cacheHours: Number(cacheHours.value),
     },
   });

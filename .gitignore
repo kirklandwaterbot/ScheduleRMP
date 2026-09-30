@@ -1,0 +1,9 @@
+node_modules/
+dist/
+build/
+artifacts/
+_metadata/
+*.zip
+*.xpi
+.DS_Store
+coverage/

@@ -1,0 +1,30 @@
+{
+  "name": "rmp-schedule-builder",
+  "version": "2.0.0",
+  "description": "Firefox add-on that adds Rate My Professors ratings to CUNY Schedule Builder.",
+  "type": "module",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kirklandwaterbot/rmp-schedule-builder.git"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "ratemyprofessor-api": "^1.0.1"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.4",
+    "web-ext": "10.7.0"
+  },
+  "scripts": {
+    "build:firefox": "node scripts/build-firefox.mjs",
+    "build": "npm run build:firefox",
+    "test": "node --test tests/*.test.js",
+    "lint:firefox": "npm run build:firefox && web-ext lint --source-dir build/firefox",
+    "package:firefox": "npm run build:firefox && web-ext build --source-dir build/firefox --artifacts-dir artifacts --overwrite-dest",
+    "check": "npm test && npm run lint:firefox"
+  },
+  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
+}

@@ -1,0 +1,15 @@
+.rmp-rating { display: inline-flex; align-items: center; margin-inline-start: .4rem; font-size: .875em; font-weight: 700; line-height: 1.4; white-space: nowrap; }
+.rmp-rating a, .rmp-rating span, .rmp-rating button { color: inherit; }
+.rmp-rating a { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
+.rmp-rating a:focus-visible, .rmp-rating button:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+.rmp-rating button { border: 1px solid currentColor; border-radius: .3rem; background: transparent; cursor: pointer; font: inherit; padding: 0 .25rem; }
+.rmp-rating--loading, .rmp-rating--unrated { color: #4a4a4a; }
+.rmp-rating--high { color: #146c2e; }
+.rmp-rating--medium { color: #8a4b00; }
+.rmp-rating--low, .rmp-rating--error { color: #b3261e; }
+@media (prefers-color-scheme: dark) {
+  .rmp-rating--loading, .rmp-rating--unrated { color: #d0d0d0; }
+  .rmp-rating--high { color: #7ee2a0; }
+  .rmp-rating--medium { color: #ffc56f; }
+  .rmp-rating--low, .rmp-rating--error { color: #ffb4ab; }
+}

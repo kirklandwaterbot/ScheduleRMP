@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "ScheduleRMP",
   "short_name": "ScheduleRMP",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Shows detailed professor ratings and exports CUNY schedules to calendar files.",
   "permissions": ["storage"],
   "host_permissions": [

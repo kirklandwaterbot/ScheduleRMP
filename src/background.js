@@ -7,6 +7,7 @@ import {
 
 const GRAPHQL_URL = "https://www.ratemyprofessors.com/graphql";
 const DEFAULT_SETTINGS = Object.freeze({
+  masterEnabled: true,
   enabled: true,
   hideUnrated: false,
   calendarExport: true,
@@ -219,7 +220,15 @@ async function getProfessorRatings(data) {
     };
   }
 
-  const [settings, school] = await Promise.all([getSettings(), resolveSchool(schoolName)]);
+  const settings = await getSettings();
+  if (!settings.masterEnabled || !settings.enabled) {
+    return {
+      status: "disabled",
+      results: Object.fromEntries(names.map((name) => [name, { status: "disabled" }])),
+    };
+  }
+
+  const school = await resolveSchool(schoolName);
   if (!school?.id) {
     return {
       status: "not_found",

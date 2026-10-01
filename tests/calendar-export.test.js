@@ -25,7 +25,7 @@ test("runs the visible-schedule review and local download flow", async () => {
   let downloadClicks = 0;
   window.browser = {
     storage: {
-      local: { get: async () => ({ settings: { calendarExport: true } }) },
+      local: { get: async () => ({ settings: { masterEnabled: true, calendarExport: true } }) },
       onChanged: { addListener: () => {} },
     },
   };
@@ -52,5 +52,27 @@ test("runs the visible-schedule review and local download flow", async () => {
   assert.equal(downloadClicks, 1);
   assert.equal(downloadedBlob.type, "text/calendar;charset=utf-8");
   assert.match(downloadedBlob.parts.join(""), /PRODID:-\/\/ScheduleRMP/);
+  dom.window.close();
+});
+
+test("does not inject calendar export while ScheduleRMP is turned off", async () => {
+  const dom = new JSDOM(fixture, {
+    pretendToBeVisual: true,
+    runScripts: "dangerously",
+    url: "https://sb.cunyfirst.cuny.edu/example",
+  });
+  const { window } = dom;
+  window.browser = {
+    storage: {
+      local: { get: async () => ({ settings: { masterEnabled: false, calendarExport: true } }) },
+      onChanged: { addListener: () => {} },
+    },
+  };
+  for (const relativePath of scriptPaths) {
+    window.eval(fs.readFileSync(path.join(currentDirectory, relativePath), "utf8"));
+  }
+  await new Promise((resolve) => window.setTimeout(resolve, 0));
+  window.CalendarExportController.reconcileExportControl();
+  assert.equal(window.document.querySelector(".rmcp-calendar-export-button"), null);
   dom.window.close();
 });

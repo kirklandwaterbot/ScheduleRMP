@@ -1,6 +1,6 @@
 (function () {
   const RECONCILE_DELAY_MS = 250;
-  const DEFAULT_SETTINGS = { calendarExport: true };
+  const DEFAULT_SETTINGS = { masterEnabled: true, calendarExport: true };
   let reconcileTimer = null;
   let enabled = true;
 
@@ -22,13 +22,15 @@
 
   async function initialize() {
     const stored = await browser.storage.local.get("settings");
-    enabled = { ...DEFAULT_SETTINGS, ...(stored.settings || {}) }.calendarExport;
+    const settings = { ...DEFAULT_SETTINGS, ...(stored.settings || {}) };
+    enabled = settings.masterEnabled && settings.calendarExport;
     if (enabled) scheduleReconcile();
   }
 
   browser.storage.onChanged.addListener((changes, areaName) => {
     if (areaName !== "local" || !changes.settings) return;
-    enabled = { ...DEFAULT_SETTINGS, ...(changes.settings.newValue || {}) }.calendarExport;
+    const settings = { ...DEFAULT_SETTINGS, ...(changes.settings.newValue || {}) };
+    enabled = settings.masterEnabled && settings.calendarExport;
     if (enabled) scheduleReconcile();
     else {
       window.clearTimeout(reconcileTimer);

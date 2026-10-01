@@ -15,6 +15,7 @@ Professors.
 - Local rating cache with configurable refresh intervals
 - Clear loading, not-found, and retry states
 - Settings to disable annotations or hide unrated professors
+- A master popup switch that turns the entire add-on on or off
 - A review-first `.ics` export for the currently visible schedule
 - Recurring class events with course details, locations, and Eastern time
 - Clear warnings for untimed, incomplete, or skipped meetings

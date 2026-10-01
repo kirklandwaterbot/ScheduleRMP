@@ -1,6 +1,6 @@
 {
   "name": "schedule-rmp",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Firefox add-on for detailed professor ratings and local calendar export in CUNY Schedule Builder.",
   "type": "module",
   "license": "MIT",

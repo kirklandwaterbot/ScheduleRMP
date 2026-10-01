@@ -1,6 +1,7 @@
 import { extractProfessorNames, normalizeForLookup } from "./name-parser.js";
 
 const DEFAULT_SETTINGS = Object.freeze({
+  masterEnabled: true,
   enabled: true,
   hideUnrated: false,
   calendarExport: true,
@@ -209,7 +210,7 @@ function renderTarget(target, results) {
 }
 
 async function runScan() {
-  if (!settings.enabled) return;
+  if (!settings.masterEnabled || !settings.enabled) return;
   if (scanning) {
     rescanRequested = true;
     return;
@@ -238,7 +239,7 @@ async function runScan() {
           }])),
         };
       }
-      if (generation !== currentGeneration || !settings.enabled) return;
+      if (generation !== currentGeneration || !settings.masterEnabled || !settings.enabled) return;
       schoolTargets.forEach((target) => renderTarget(target, response?.results));
     }));
   } finally {
@@ -271,12 +272,12 @@ browser.storage.onChanged.addListener((changes, areaName) => {
   settings = { ...DEFAULT_SETTINGS, ...(changes.settings.newValue || {}) };
   generation += 1;
   removeRatings();
-  if (settings.enabled) scheduleScan(0);
+  if (settings.masterEnabled && settings.enabled) scheduleScan(0);
 });
 
 async function initialize() {
   await loadSettings();
-  if (settings.enabled) scheduleScan(0);
+  if (settings.masterEnabled && settings.enabled) scheduleScan(0);
   new MutationObserver(() => scheduleScan()).observe(document.documentElement, {
     childList: true,
     subtree: true,

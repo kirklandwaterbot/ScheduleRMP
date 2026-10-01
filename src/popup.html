@@ -13,27 +13,37 @@
         <div><h1>ScheduleRMP</h1><p>Firefox settings</p></div>
       </header>
       <form id="settings-form">
-        <label class="toggle-row">
-          <span><strong>Show professor ratings</strong><small>Annotate instructors in CUNY Schedule Builder.</small></span>
-          <input id="enabled" name="enabled" type="checkbox">
+        <label class="master-row">
+          <span><strong>ScheduleRMP</strong><small id="master-description">Turn every ScheduleRMP feature on or off.</small></span>
+          <span class="master-control">
+            <span id="master-state" class="state-badge">On</span>
+            <input id="master-enabled" name="masterEnabled" type="checkbox" role="switch" aria-describedby="master-description">
+          </span>
         </label>
-        <label class="toggle-row">
-          <span><strong>Hide unrated professors</strong><small>Only show professors with a matching RMP profile.</small></span>
-          <input id="hide-unrated" name="hideUnrated" type="checkbox">
-        </label>
-        <label class="toggle-row">
-          <span><strong>Calendar export</strong><small>Review and download the visible schedule as a local .ics file.</small></span>
-          <input id="calendar-export" name="calendarExport" type="checkbox">
-        </label>
-        <label class="select-row" for="cache-hours">
-          <span><strong>Refresh cached ratings</strong><small>Fewer lookups make schedule pages load faster.</small></span>
-          <select id="cache-hours" name="cacheHours">
-            <option value="1">Every hour</option>
-            <option value="12">Every 12 hours</option>
-            <option value="24">Every day</option>
-            <option value="168">Every week</option>
-          </select>
-        </label>
+        <fieldset id="feature-settings">
+          <legend>Individual features</legend>
+          <label class="toggle-row">
+            <span><strong>Show professor ratings</strong><small>Annotate instructors in CUNY Schedule Builder.</small></span>
+            <input id="enabled" name="enabled" type="checkbox">
+          </label>
+          <label class="toggle-row">
+            <span><strong>Hide unrated professors</strong><small>Only show professors with a matching RMP profile.</small></span>
+            <input id="hide-unrated" name="hideUnrated" type="checkbox">
+          </label>
+          <label class="toggle-row">
+            <span><strong>Calendar export</strong><small>Review and download the visible schedule as a local .ics file.</small></span>
+            <input id="calendar-export" name="calendarExport" type="checkbox">
+          </label>
+          <label class="select-row" for="cache-hours">
+            <span><strong>Refresh cached ratings</strong><small>Fewer lookups make schedule pages load faster.</small></span>
+            <select id="cache-hours" name="cacheHours">
+              <option value="1">Every hour</option>
+              <option value="12">Every 12 hours</option>
+              <option value="24">Every day</option>
+              <option value="168">Every week</option>
+            </select>
+          </label>
+        </fieldset>
       </form>
       <section class="cache-panel" aria-labelledby="cache-title">
         <div><strong id="cache-title">Rating cache</strong><small id="cache-count">Checking…</small></div>

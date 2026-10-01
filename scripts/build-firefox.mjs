@@ -59,8 +59,8 @@ await Promise.all([
   ),
   ...[16, 32, 48, 96, 128].map((size) =>
     copyFile(
-      resolve(projectRoot, "src", "icons", `icon-${size}.svg`),
-      resolve(outputDirectory, "icons", `icon-${size}.svg`),
+      resolve(projectRoot, "src", "icons", `icon-${size}.png`),
+      resolve(outputDirectory, "icons", `icon-${size}.png`),
     ),
   ),
 ]);
